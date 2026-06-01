@@ -1,0 +1,22 @@
+sudo systemctl mask systemd-networkd-wait-online.service
+/etc/netplan/50-init-cloud
+
+nameservers:
+addresses: [8.8.8.8, 8.8.4.4]
+
+sudo loginctl enable-linger <username>
+
+
+
+systemctl --user daemon-reload
+systemctl --user enable --now vscode-tunnel.service
+systemctl --user restart vscode-tunnel.service
+systemctl --user status vscode-tunnel.service --no-pager
+journalctl --user -u vscode-tunnel.service -n 50 --no-pager
+
+
+#sudo systemctl mask NetworkManager-wait-online.service
+### TO UNMASK ###
+#sudo systemctl unmask systemd-networkd-wait-online.service
+#sudo systemctl unmask NetworkManager-wait-online.service
+################
